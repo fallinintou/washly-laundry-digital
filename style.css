@@ -1,0 +1,631 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #eef7ff;
+  color: #213547;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* LOGIN */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at top left, #b3e5ff, transparent 35%),
+    linear-gradient(135deg, #e8f7ff, #ffffff);
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: white;
+  padding: 32px 24px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(20, 86, 150, 0.15);
+}
+
+.logo-circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #dff5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+}
+
+.login-card h1 {
+  font-size: 34px;
+  color: #0a72b8;
+}
+
+.login-card p {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #d6ecff;
+  border-radius: 16px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 16px;
+  background: #0a72b8;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.error-text {
+  color: #ef4444;
+  margin-top: 12px;
+}
+
+/* APP */
+.app {
+  max-width: 520px;
+  margin: auto;
+  min-height: 100vh;
+  background: #f8fbff;
+  padding-bottom: 30px;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #0a72b8, #32b5ff);
+  color: white;
+  padding: 24px 20px 30px;
+  border-radius: 0 0 28px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header h2 {
+  font-size: 26px;
+}
+
+.app-header p {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.logout-btn {
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 9px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+/* DASHBOARD */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: -18px 16px 18px;
+}
+
+.stat-card {
+  background: white;
+  padding: 18px;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card h3 {
+  color: #0a72b8;
+  font-size: 24px;
+}
+
+.stat-card p {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* TABS */
+.menu-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 0 16px;
+  margin-bottom: 20px;
+}
+
+.menu-tabs button {
+  padding: 12px 6px;
+  border: none;
+  border-radius: 16px;
+  background: #e2edf7;
+  color: #4b5563;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-tabs button.active {
+  background: #0a72b8;
+  color: white;
+}
+
+/* PAGE */
+.page {
+  padding: 0 16px;
+}
+
+.section-title {
+  margin-bottom: 14px;
+}
+
+.section-title h3 {
+  font-size: 22px;
+}
+
+.section-title p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* SERVICE */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.service-card {
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 22px;
+  padding: 18px 12px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.service-card span {
+  display: block;
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.service-card b {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.service-card small {
+  color: #6b7280;
+}
+
+.active-service {
+  border-color: #0a72b8;
+  background: #e8f6ff;
+}
+
+/* FORM */
+.form-card {
+  background: white;
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.form-card label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 7px;
+  margin-top: 12px;
+}
+
+.form-card input,
+.search-input,
+.pickup-card input {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #d8e8f5;
+  border-radius: 15px;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-card input:focus,
+.search-input:focus,
+.pickup-card input:focus {
+  border-color: #0a72b8;
+}
+
+.calculation-box {
+  margin: 18px 0;
+  padding: 15px;
+  background: #eef8ff;
+  border-radius: 18px;
+}
+
+.calculation-box p {
+  margin: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 15px;
+  background: #0a72b8;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ORDER LIST */
+.order-list {
+  margin-top: 16px;
+}
+
+.order-card {
+  background: white;
+  border-radius: 22px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.order-top h4 {
+  color: #0a72b8;
+}
+
+.order-card p {
+  font-size: 14px;
+  color: #4b5563;
+  margin-top: 5px;
+}
+
+.status-badge {
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.status-diproses {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-dicuci {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.status-selesai {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-diambil {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.order-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.order-actions button {
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  background: #edf5ff;
+  color: #0a72b8;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* PICKUP */
+.pickup-card {
+  background: white;
+  padding: 18px;
+  border-radius: 22px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.pickup-card button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 15px;
+  background: #0a72b8;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pickup-result-card {
+  margin-top: 16px;
+  background: white;
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.pickup-result-card h3 {
+  color: #0a72b8;
+  margin-bottom: 8px;
+}
+
+.pickup-result-card p {
+  margin: 6px 0;
+}
+
+.pickup-result-card button {
+  margin-top: 14px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background: #16a34a;
+  color: white;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 99;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 26px;
+  padding: 22px;
+  position: relative;
+  animation: popUp 0.25s ease;
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  background: #fee2e2;
+  color: #991b1b;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.receipt-brand {
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #d1d5db;
+  gap: 12px;
+}
+
+.qr-box {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0;
+}
+
+.modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.modal-actions button {
+  padding: 13px;
+  border: none;
+  border-radius: 14px;
+  background: #0a72b8;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 390px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-tabs button {
+    font-size: 12px;
+  }
+
+  .app {
+    max-width: 100%;
+  }
+}
+@media (min-width: 900px) {
+  body {
+    background: linear-gradient(135deg, #eaf7ff, #f8fbff);
+  }
+
+  .app {
+    max-width: 1180px;
+    margin: 24px auto;
+    min-height: calc(100vh - 48px);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: auto 1fr;
+    background: #f8fbff;
+  }
+
+  .app-header {
+    grid-column: 1 / 3;
+    border-radius: 0;
+    padding: 26px 34px;
+  }
+
+  .dashboard {
+    grid-column: 2 / 3;
+    margin: 24px 32px 18px;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+
+  .menu-tabs {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 28px 18px;
+    margin: 0;
+    gap: 14px;
+    border-right: 1px solid #e5eef8;
+  }
+
+  .menu-tabs button {
+    width: 100%;
+    text-align: left;
+    padding: 16px 18px;
+    font-size: 15px;
+    border-radius: 18px;
+  }
+
+  .page {
+    grid-column: 2 / 3;
+    padding: 0 32px 36px;
+  }
+
+  .section-title {
+    margin-top: 4px;
+  }
+
+  .section-title h3 {
+    font-size: 26px;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+
+  .service-card {
+    min-height: 145px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-card {
+    max-width: 760px;
+    padding: 24px;
+  }
+
+  .form-card input,
+  .search-input,
+  .pickup-card input {
+    font-size: 16px;
+  }
+
+  .calculation-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 24px;
+  }
+
+  .calculation-box p {
+    margin: 5px 0;
+  }
+
+  .order-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .order-card {
+    margin-bottom: 0;
+  }
+
+  .pickup-card {
+    max-width: 680px;
+  }
+
+  #pickupResult {
+    max-width: 680px;
+  }
+
+  .modal-content {
+    max-width: 520px;
+  }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Washly - Warung Digital Laundry</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- QR Code Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="logo-circle">🧺</div>
+      <h1>Washly</h1>
+      <p>Warung Digital Laundry</p>
+
+      <input type="password" id="pinInput" maxlength="6" placeholder="Masukkan PIN Kasir">
+      <button onclick="login()">Masuk</button>
+
+      <small>PIN demo: <b>1234</b></small>
+      <p id="loginError" class="error-text"></p>
+    </div>
+  </section>
+
+  <!-- MAIN APP -->
+  <main id="appScreen" class="app hidden">
+
+    <!-- HEADER -->
+    <header class="app-header">
+      <div>
+        <h2>Washly POS</h2>
+        <p>Solusi POS Laundry UMKM</p>
+      </div>
+      <button class="logout-btn" onclick="logout()">Keluar</button>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section class="dashboard">
+      <div class="stat-card">
+        <h3 id="totalOrder">0</h3>
+        <p>Total Order</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="totalIncome">Rp0</h3>
+        <p>Pendapatan</p>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <nav class="menu-tabs">
+      <button class="active" onclick="showPage('transactionPage', this)">Transaksi</button>
+      <button onclick="showPage('orderPage', this)">Order</button>
+      <button onclick="showPage('pickupPage', this)">Pengambilan</button>
+    </nav>
+
+    <!-- TRANSACTION PAGE -->
+    <section id="transactionPage" class="page">
+
+      <div class="section-title">
+        <h3>Transaksi Baru</h3>
+        <p>Pilih layanan laundry dengan ikon</p>
+      </div>
+
+      <div class="service-grid">
+        <button class="service-card active-service" onclick="selectService(this, 'Cuci Kering', 6000, 2)">
+          <span>👕</span>
+          <b>Cuci Kering</b>
+          <small>Rp6.000/kg</small>
+        </button>
+
+        <button class="service-card" onclick="selectService(this, 'Cuci Setrika', 8000, 2)">
+          <span>🧺</span>
+          <b>Cuci Setrika</b>
+          <small>Rp8.000/kg</small>
+        </button>
+
+        <button class="service-card" onclick="selectService(this, 'Express', 12000, 1)">
+          <span>⚡</span>
+          <b>Express</b>
+          <small>Rp12.000/kg</small>
+        </button>
+
+        <button class="service-card" onclick="selectService(this, 'Bed Cover', 20000, 3)">
+          <span>🛏️</span>
+          <b>Bed Cover</b>
+          <small>Rp20.000/item</small>
+        </button>
+
+        <button class="service-card" onclick="selectService(this, 'Karpet', 25000, 4)">
+          <span>🧼</span>
+          <b>Karpet</b>
+          <small>Rp25.000/item</small>
+        </button>
+      </div>
+
+      <form class="form-card" onsubmit="saveTransaction(event)">
+        <label>Nama Pelanggan</label>
+        <input type="text" id="customerName" placeholder="Contoh: Budi" required>
+
+        <label>Nomor HP</label>
+        <input type="tel" id="phoneNumber" placeholder="Contoh: 081234567890" required>
+
+        <label>Berat / Jumlah Item</label>
+        <input type="number" id="weight" min="1" step="0.5" placeholder="Contoh: 3" oninput="calculateTotal()" required>
+
+        <label>Uang Pelanggan</label>
+        <input type="number" id="paidAmount" min="0" placeholder="Contoh: 50000" oninput="calculateTotal()" required>
+
+        <div class="calculation-box">
+          <p>Layanan: <b id="selectedServiceText">Cuci Kering</b></p>
+          <p>Total Harga: <b id="totalPrice">Rp0</b></p>
+          <p>Kembalian: <b id="changeAmount">Rp0</b></p>
+          <p>Estimasi Selesai: <b id="estimateDate">-</b></p>
+        </div>
+
+        <button type="submit" class="primary-btn">Simpan & Buat Nota</button>
+      </form>
+    </section>
+
+    <!-- ORDER PAGE -->
+    <section id="orderPage" class="page hidden">
+
+      <div class="section-title">
+        <h3>Daftar Order</h3>
+        <p>Update status laundry dengan warna</p>
+      </div>
+
+      <input type="text" id="searchOrder" class="search-input" placeholder="Cari nama / invoice / kode..." oninput="renderOrders()">
+
+      <div id="orderList" class="order-list"></div>
+    </section>
+
+    <!-- PICKUP PAGE -->
+    <section id="pickupPage" class="page hidden">
+
+      <div class="section-title">
+        <h3>Pengambilan Laundry</h3>
+        <p>Scan QR atau masukkan kode pengambilan</p>
+      </div>
+
+      <div class="pickup-card">
+        <input type="text" id="pickupCodeInput" placeholder="Masukkan kode pengambilan">
+        <button onclick="findPickup()">Cari Order</button>
+      </div>
+
+      <div id="pickupResult"></div>
+    </section>
+
+  </main>
+
+  <!-- RECEIPT MODAL -->
+  <div id="receiptModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeReceipt()">×</button>
+
+      <h2>Nota Digital</h2>
+      <p class="receipt-brand">Washly Laundry</p>
+
+      <div id="receiptData"></div>
+
+      <div id="qrcode" class="qr-box"></div>
+
+      <div class="modal-actions">
+        <button onclick="printReceipt()">Cetak Nota</button>
+        <button onclick="sendWhatsApp()">Kirim WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
